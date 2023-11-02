@@ -20,6 +20,6 @@ use App\Http\Controllers\TodosController;
 // });
 
 Route::get('/todos', [TodosController::class, 'index']);
-Route::get('/todos/add', [TodosController::class, 'add']);
-Route::get('/todos/edit', [TodosController::class, 'edit']);
-Route::get('/todos/remove', [TodosController::class, 'remove']);
+Route::post('/todos/add', [TodosController::class, 'add']);
+Route::post('/todos/edit', [TodosController::class, 'edit']);
+Route::delete('/todos/remove/{id}', [TodosController::class, 'remove']);

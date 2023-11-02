@@ -16,10 +16,11 @@ class TodosController extends Controller
     
     public function add(Request $request)
     {
-        
-        $id = $request->input('id');
-        $text = $request->input('text');
 
+        //todo: we didnt use input | query since we're using json
+        $id = $request->id;
+        $text = $request->text;
+        
         $objTodos = new Todos();
         $objTodos->text = $text;
         $pId = $objTodos->save();
@@ -32,8 +33,10 @@ class TodosController extends Controller
 
     public function edit(Request $request)
     {
-        $id = $request->input('id');
-        $text = $request->input('text');
+        
+        //todo: we didnt use input | query since we're using json
+        $id = $request->id;
+        $text = $request->text;
 
         $objTodos = Todos::find($id);
         $objTodos->text = $text;
@@ -45,9 +48,8 @@ class TodosController extends Controller
         ));
     }
 
-    public function remove(Request $request)
+    public function remove($id)
     {
-        $id = $request->query('id');
         $objTodos = Todos::find($id);
         $objTodos->delete();
 
