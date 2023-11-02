@@ -17,8 +17,8 @@ class TodosController extends Controller
     public function add(Request $request)
     {
         
-        $id = $request->get('id');
-        $text = $request->get('text');
+        $id = $request->input('id');
+        $text = $request->input('text');
 
         $objTodos = new Todos();
         $objTodos->text = $text;
@@ -32,8 +32,8 @@ class TodosController extends Controller
 
     public function edit(Request $request)
     {
-        $id = $request->get('id');
-        $text = $request->get('text');
+        $id = $request->input('id');
+        $text = $request->input('text');
 
         $objTodos = Todos::find($id);
         $objTodos->text = $text;
@@ -47,7 +47,7 @@ class TodosController extends Controller
 
     public function remove(Request $request)
     {
-        $id = $request->get('id');
+        $id = $request->query('id');
         $objTodos = Todos::find($id);
         $objTodos->delete();
 
